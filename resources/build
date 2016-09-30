@@ -1,31 +1,32 @@
 #!/bin/sh
+
+###
+# Installing dependencies
+###
+apt-get update
+apt-get install -y nodejs software-properties-common git curl python build-essential chrpath wget libssl-dev libxft-dev python libfreetype6-dev libfontconfig1 libfontconfig1-dev
+apt-get clean
+
 ###
 # Installing PhantomJS
 ###
-# Adding PPA for PhantomJS
-apt-get update
-apt-get install -y \
-  software-properties-common
-add-apt-repository ppa:tanguy-patte/phantomjs
-apt-get update
-apt-get install -y \
-  phantomjs \
-  git \
-  python
-apt-get clean
+mkdir /tmp/phantomjs
+wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2 -O /tmp/phantomjs.tar.bz2
+tar -xjf /tmp/phantomjs.tar.bz2 --strip-components=1 -C /tmp/phantomjs
+mv /tmp/phantomjs/bin/phantomjs /usr/local/bin
+
 ###
 # Installing CasperJS
 ###
-# Cloning Repo
 git clone git://github.com/casperjs/casperjs.git
 cd casperjs
 git checkout ${CASPERJS_VERSION}
 cd ..
+
 # Removing history
 rm -rf casperjs/.git
 mv casperjs /opt/
 ln -sf /opt/casperjs/bin/casperjs /usr/local/bin/casperjs
 cd /opt/casperjs
 rm -rf *.gemspec docs rpm samples
-apt-get remove -y \
-  git
+apt-get remove -y git

@@ -1,6 +1,6 @@
-FROM ubuntu:14.04.4
+FROM ubuntu:16.04
 
-MAINTAINER zopanix <zopanix@gmail.com>
+MAINTAINER Simone Scarduzio <sscarduzio@gmail.com>
 
 ENV CASPERJS_VERSION=1.1.3
 
