@@ -10,4 +10,4 @@ This container is made for running CasperJS scripts. The combination of these tw
 
 ## Usage
 The container does not contain your code, for Casperjs to see your code, mount the folder with the script under /data. 
-```docker run --rm -v `pwd`:/data sscarduzio/casperjs yourscript.js```
+```docker run --rm -v `pwd`:/data scarduzio/casperjs yourscript.js```
